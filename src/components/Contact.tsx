@@ -18,7 +18,7 @@ export default function Contact() {
         <SectionHeading eyebrow="Contact" title="Need a website?" centered />
         <p className="mt-4 text-muted text-lg mb-10">
           I build those. If you or someone you know needs a site built,
-          email me and let&apos;s talk about it. Also happy to hear about
+          email or call me and let&apos;s talk about it. Also happy to hear about
           internships, collabs, or anything else code-related.
         </p>
 
@@ -50,9 +50,26 @@ export default function Contact() {
           </a>
         </div>
 
-        <p className="mt-8 font-mono text-sm text-muted">
-          lydiagroza@gmail.com
-        </p>
+        <div className="mt-8 flex flex-col items-center gap-2 font-mono text-sm text-muted">
+          <a
+            href="mailto:lydiagroza@gmail.com"
+            className="transition-colors hover:text-teal"
+          >
+            lydiagroza@gmail.com
+          </a>
+          <a
+            href="tel:+40723040958"
+            className="transition-colors hover:text-teal"
+          >
+            RO&nbsp;&nbsp;+40 723 040 958
+          </a>
+          <a
+            href="tel:+19202051110"
+            className="transition-colors hover:text-teal"
+          >
+            US&nbsp;&nbsp;+1 (920) 205-1110
+          </a>
+        </div>
       </motion.div>
     </section>
   );
