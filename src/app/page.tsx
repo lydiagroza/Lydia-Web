@@ -9,6 +9,10 @@ import ParticleField from "@/components/ParticleField";
 export default function Home() {
   return (
     <>
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(45,212,167,0.07),transparent_70%)]"
+      />
       <ParticleField />
       <Nav />
       <main className="flex-1">

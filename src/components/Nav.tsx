@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
   { href: "#about", label: "About" },
@@ -16,7 +16,7 @@ export default function Nav() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -26,7 +26,7 @@ export default function Nav() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
-        scrolled
+        scrolled || open
           ? "backdrop-blur-md bg-background/70 border-b border-border"
           : "border-b border-transparent"
       }`}
@@ -56,6 +56,7 @@ export default function Nav() {
           onClick={() => setOpen((v) => !v)}
           className="sm:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           <span
             className={`h-px w-6 bg-foreground transition-transform ${open ? "translate-y-2 rotate-45" : ""}`}
@@ -69,26 +70,28 @@ export default function Nav() {
         </button>
       </nav>
 
-      {open && (
-        <motion.ul
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          className="sm:hidden flex flex-col gap-4 px-6 pb-6 text-sm text-muted"
-        >
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </motion.ul>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="sm:hidden flex flex-col gap-4 px-6 overflow-hidden text-sm text-muted"
+          >
+            {links.map((link) => (
+              <li key={link.href} className="last:pb-6">
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

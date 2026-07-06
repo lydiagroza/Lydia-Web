@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 
 const container = {
@@ -32,22 +33,39 @@ export default function Hero() {
         animate="show"
         className="flex flex-col items-center"
       >
-        <motion.div variants={item} className="relative mb-7 h-24 w-24 sm:h-28 sm:w-28">
-          <Image
-            src="https://avatars.githubusercontent.com/u/131545909?v=4"
-            alt="Lydia Groza"
-            fill
-            sizes="112px"
-            className="rounded-full border border-border object-cover"
-            priority
+        <motion.div variants={item} className="relative mb-7">
+          <div
+            aria-hidden
+            className="absolute -inset-3 rounded-full bg-teal/20 blur-2xl"
           />
+          <div className="relative h-24 w-24 sm:h-28 sm:w-28">
+            <Image
+              src="/avatar.jpg"
+              alt="Lydia Groza"
+              fill
+              sizes="112px"
+              className="rounded-full border border-foreground/20 object-cover"
+              priority
+            />
+          </div>
         </motion.div>
+
+        <motion.p
+          variants={item}
+          className="mb-5 flex items-center gap-2 rounded-full border border-teal/25 bg-teal/10 px-4 py-1.5 text-xs font-medium text-teal"
+        >
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 rounded-full bg-teal motion-safe:animate-pulse"
+          />
+          Open to freelance & internships
+        </motion.p>
 
         <motion.h1
           variants={item}
           className="text-5xl sm:text-6xl font-semibold tracking-tight text-foreground"
         >
-          Lydia Groza
+          Lydia Groza<span className="text-teal">.</span>
         </motion.h1>
 
         <motion.p
@@ -60,12 +78,21 @@ export default function Hero() {
           me.
         </motion.p>
 
-        <motion.div variants={item} className="mt-8 flex items-center gap-3">
+        <motion.div
+          variants={item}
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+        >
           <a
             href="#projects"
-            className="rounded-md border border-foreground px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="whitespace-nowrap rounded-md bg-teal px-5 py-2.5 text-sm font-medium text-background transition-colors hover:bg-teal/85"
           >
             See my work
+          </a>
+          <a
+            href="#contact"
+            className="whitespace-nowrap rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-teal/50 hover:text-teal"
+          >
+            Get in touch
           </a>
           <a
             href="https://github.com/lydiagroza"
@@ -87,6 +114,17 @@ export default function Hero() {
           </a>
         </motion.div>
       </motion.div>
+
+      <motion.a
+        href="#about"
+        aria-label="Scroll to about section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="absolute bottom-8 text-muted/60 transition-colors hover:text-teal"
+      >
+        <ChevronDown size={22} className="motion-safe:animate-bounce" />
+      </motion.a>
     </section>
   );
 }

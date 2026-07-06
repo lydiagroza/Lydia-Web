@@ -56,8 +56,8 @@ export default function ParticleField() {
       mouse.x = -9999;
       mouse.y = -9999;
     };
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerleave", onLeave);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerleave", onLeave, { passive: true });
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
@@ -68,7 +68,7 @@ export default function ParticleField() {
           const b = particles[j];
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
           if (dist < LINK_DIST) {
-            ctx.strokeStyle = `rgba(168, 85, 247, ${0.16 * (1 - dist / LINK_DIST)})`;
+            ctx.strokeStyle = `rgba(45, 212, 167, ${0.14 * (1 - dist / LINK_DIST)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -79,7 +79,7 @@ export default function ParticleField() {
 
         const distm = Math.hypot(a.x - mouse.x, a.y - mouse.y);
         if (distm < MOUSE_DIST) {
-          ctx.strokeStyle = `rgba(168, 85, 247, ${0.45 * (1 - distm / MOUSE_DIST)})`;
+          ctx.strokeStyle = `rgba(45, 212, 167, ${0.4 * (1 - distm / MOUSE_DIST)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);

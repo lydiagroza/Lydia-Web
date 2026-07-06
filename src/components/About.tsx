@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SectionHeading from "./SectionHeading";
 
 const skills = [
   "C++",
@@ -38,11 +39,8 @@ export default function About() {
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeUp}
         >
-          <p className="font-mono text-sm text-teal mb-3">About</p>
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-6">
-            A little about me
-          </h2>
-          <div className="space-y-4 text-muted text-lg leading-relaxed">
+          <SectionHeading eyebrow="About" title="A little about me" />
+          <div className="mt-6 space-y-4 text-muted text-lg leading-relaxed">
             <p>
               I&apos;m a computer science student at{" "}
               <span className="text-foreground">
@@ -75,7 +73,7 @@ export default function About() {
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-md border border-border px-3 py-1.5 text-sm text-muted"
+                className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-teal/40 hover:text-foreground"
               >
                 {skill}
               </span>

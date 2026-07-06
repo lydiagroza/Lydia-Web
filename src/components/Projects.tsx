@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import SectionHeading from "./SectionHeading";
 
 export default function Projects() {
   return (
@@ -13,14 +14,13 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-12"
         >
-          <p className="font-mono text-sm text-teal mb-3">Projects</p>
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-            Things I&apos;ve built
-          </h2>
-          <p className="max-w-xl text-muted text-lg mb-12">
-            A few of the ones I&apos;d actually want you to look at.
-          </p>
+          <SectionHeading
+            eyebrow="Projects"
+            title="Things I've built"
+            lead="A few of the ones I'd actually want you to look at."
+          />
         </motion.div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
