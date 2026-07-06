@@ -18,7 +18,8 @@ export default function Contact() {
         <SectionHeading eyebrow="Contact" title="Need a website?" centered />
         <p className="mt-4 text-muted text-lg mb-10">
           I build those. If you or someone you know needs a site built,
-          email or call me and let&apos;s talk about it. Also happy to hear about
+          email, call, or text me and let&apos;s talk about it. Also happy to
+          hear about
           internships, collabs, or anything else code-related.
         </p>
 
