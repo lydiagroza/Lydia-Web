@@ -1,0 +1,30 @@
+# Apache config for cPanel hosting (copied into out/ on build).
+
+# Always use HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_mime.c>
+  AddType image/png opengraph-image
+</IfModule>
+<Files "opengraph-image">
+  ForceType image/png
+</Files>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/plain text/xml
+</IfModule>
+
+# Next.js build assets have content hashes in their names, so they can be
+# cached forever; HTML must always be revalidated to pick up new deploys.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
