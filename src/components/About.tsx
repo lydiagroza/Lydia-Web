@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ease } from "@/lib/motion";
 import SectionHeading from "./SectionHeading";
+import type { Dictionary } from "@/i18n/dictionaries";
 
 const skills = [
   "C++",
@@ -30,7 +31,7 @@ const fadeUp = {
   },
 };
 
-export default function About() {
+export default function About({ t }: { t: Dictionary["about"] }) {
   return (
     <section id="about" className="relative py-24 px-6">
       <div className="mx-auto max-w-3xl">
@@ -40,24 +41,15 @@ export default function About() {
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeUp}
         >
-          <SectionHeading eyebrow="About" title="A little about me" />
+          <SectionHeading eyebrow={t.eyebrow} title={t.title} />
           <div className="mt-6 space-y-4 text-muted text-lg leading-relaxed">
-            <p>
-              I&apos;m a computer science student at{" "}
-              <span className="text-foreground">
-                Transilvania University of Brașov
-              </span>
-              . Most of my coursework and side projects land somewhere
-              between AI tooling, full-stack web apps, and lower-level
-              systems work — whatever a project needs. I also build websites
-              on the side, so if you or someone you know needs one, that&apos;s
-              a project I&apos;d take on.
-            </p>
-            <p>
-              Outside of that, I&apos;m usually out with my dog{" "}
-              <span className="text-foreground">Bailey</span>, who has
-              strong opinions about frisbees.
-            </p>
+            {[t.p1, t.p2].map(([before, highlight, after]) => (
+              <p key={highlight}>
+                {before}
+                <span className="text-foreground">{highlight}</span>
+                {after}
+              </p>
+            ))}
           </div>
         </motion.div>
 
@@ -69,7 +61,7 @@ export default function About() {
           transition={{ delay: 0.1 }}
           className="mt-12"
         >
-          <p className="font-mono text-sm text-muted mb-4">Stack I reach for</p>
+          <p className="font-mono text-sm text-muted mb-4">{t.stack}</p>
           <div className="flex flex-wrap gap-2">
             {skills.map((skill) => (
               <span

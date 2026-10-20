@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   images: { unoptimized: true },
+  // One 404 page for both language root layouts.
+  experimental: { globalNotFound: true },
 };
 
 export default nextConfig;

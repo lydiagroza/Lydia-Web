@@ -2,11 +2,18 @@
 
 import { motion } from "framer-motion";
 import { ease } from "@/lib/motion";
-import { projects } from "@/data/projects";
+import type { ProjectView } from "@/data/projects";
+import type { Dictionary } from "@/i18n/dictionaries";
 import ProjectCard from "./ProjectCard";
 import SectionHeading from "./SectionHeading";
 
-export default function Projects() {
+export default function Projects({
+  t,
+  projects,
+}: {
+  t: Dictionary["projects"];
+  projects: ProjectView[];
+}) {
   return (
     <section id="projects" className="relative py-28 px-6">
       <div className="mx-auto max-w-5xl">
@@ -17,11 +24,7 @@ export default function Projects() {
           transition={{ duration: 0.8, ease }}
           className="mb-12"
         >
-          <SectionHeading
-            eyebrow="Projects"
-            title="Things I've built"
-            lead="A few of the ones I'd actually want you to look at."
-          />
+          <SectionHeading eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
         </motion.div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -43,7 +46,7 @@ export default function Projects() {
             rel="noreferrer"
             className="text-sm text-muted underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
           >
-            See everything else on GitHub →
+            {t.more}
           </a>
         </motion.div>
       </div>

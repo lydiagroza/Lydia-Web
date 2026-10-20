@@ -2,11 +2,16 @@
 
 import { motion } from "framer-motion";
 import { ease } from "@/lib/motion";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import SectionHeading from "./SectionHeading";
+import ContactForm from "./ContactForm";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export default function Contact() {
+const secondary =
+  "flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-muted transition-colors hover:border-accent hover:text-accent";
+
+export default function Contact({ t }: { t: Dictionary["contact"] }) {
   return (
     <section id="contact" className="relative py-32 px-6">
       <motion.div
@@ -16,27 +21,34 @@ export default function Contact() {
         transition={{ duration: 0.8, ease }}
         className="mx-auto max-w-2xl text-center"
       >
-        <SectionHeading eyebrow="Contact" title="Need a website?" centered />
-        <p className="mt-4 text-muted text-lg mb-10">
-          I build those. If you or someone you know needs a site built,
-          email, call, or text me and let&apos;s talk about it. Also happy to
-          hear about
-          internships, collabs, or anything else code-related.
-        </p>
+        <SectionHeading eyebrow={t.eyebrow} title={t.title} centered />
+        <p className="mt-4 text-muted text-lg mb-10">{t.body}</p>
 
+        <ContactForm t={t.form} />
+
+        <p className="mt-12 mb-5 font-mono text-sm text-muted">{t.direct}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <a
             href="mailto:lydiagroza@gmail.com"
             className="flex items-center gap-2 rounded-md bg-indigo px-6 py-3 text-sm font-medium text-white shadow-[0_8px_24px_-10px_rgba(79,70,229,0.8)] transition-[background-color,box-shadow,translate] hover:-translate-y-px hover:bg-indigo-bright hover:shadow-[0_10px_30px_-8px_rgba(79,70,229,0.9)]"
           >
             <Mail size={16} />
-            Email me
+            {t.email}
+          </a>
+          <a
+            href={`https://wa.me/40723040958?text=${encodeURIComponent(t.whatsappText)}`}
+            target="_blank"
+            rel="noreferrer"
+            className={secondary}
+          >
+            <MessageCircle size={16} />
+            {t.whatsapp}
           </a>
           <a
             href="https://github.com/lydiagroza"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-muted transition-colors hover:border-accent hover:text-accent"
+            className={secondary}
           >
             <GithubIcon size={16} />
             GitHub
@@ -45,7 +57,7 @@ export default function Contact() {
             href="https://www.linkedin.com/in/lydiagroza/"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-muted transition-colors hover:border-accent hover:text-accent"
+            className={secondary}
           >
             <LinkedinIcon size={16} />
             LinkedIn

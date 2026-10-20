@@ -20,7 +20,7 @@ export default function SectionHeading({
         {eyebrow}
         {centered && <span aria-hidden className="h-px w-8 bg-accent/50" />}
       </p>
-      <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
         {title}
       </h2>
       {lead && (

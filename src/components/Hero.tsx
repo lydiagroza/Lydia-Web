@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { useIntro } from "./IntroProvider";
+import type { Dictionary } from "@/i18n/dictionaries";
 
 const container = {
   hidden: {},
@@ -23,7 +24,7 @@ const item = {
   },
 };
 
-export default function Hero() {
+export default function Hero({ t }: { t: Dictionary["hero"] }) {
   const { ready } = useIntro();
 
   return (
@@ -62,12 +63,12 @@ export default function Hero() {
             aria-hidden
             className="h-1.5 w-1.5 rounded-full bg-accent motion-safe:animate-pulse"
           />
-          Open to freelance & internships
+          {t.badge}
         </motion.p>
 
         <motion.h1
           variants={item}
-          className="text-5xl sm:text-6xl font-semibold tracking-tight text-foreground"
+          className="font-display text-5xl sm:text-6xl font-semibold tracking-tight text-foreground"
         >
           Lydia Groza<span className="text-accent">.</span>
         </motion.h1>
@@ -76,10 +77,7 @@ export default function Hero() {
           variants={item}
           className="mt-5 max-w-lg text-balance text-lg text-muted"
         >
-          Computer science student in Brașov, Romania. I build AI tools,
-          full-stack apps, and the occasional piece of hardware — and I take
-          on freelance website projects, so if you need one built, that&apos;s
-          me.
+          {t.intro}
         </motion.p>
 
         <motion.div
@@ -87,22 +85,22 @@ export default function Hero() {
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <a
-            href="#projects"
+            href="#work"
             className="whitespace-nowrap rounded-md bg-indigo px-5 py-2.5 text-sm font-medium text-white shadow-[0_8px_24px_-10px_rgba(79,70,229,0.8)] transition-[background-color,box-shadow,translate] hover:-translate-y-px hover:bg-indigo-bright hover:shadow-[0_10px_30px_-8px_rgba(79,70,229,0.9)]"
           >
-            See my work
+            {t.ctaWork}
           </a>
           <a
             href="#contact"
             className="whitespace-nowrap rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50 hover:text-accent"
           >
-            Get in touch
+            {t.ctaContact}
           </a>
           <a
             href="https://github.com/lydiagroza"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent"
+            className="hidden h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent sm:flex"
             aria-label="GitHub"
           >
             <GithubIcon size={18} />
@@ -111,7 +109,7 @@ export default function Hero() {
             href="https://www.linkedin.com/in/lydiagroza/"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent"
+            className="hidden h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent sm:flex"
             aria-label="LinkedIn"
           >
             <LinkedinIcon size={18} />
@@ -120,8 +118,8 @@ export default function Hero() {
       </motion.div>
 
       <motion.a
-        href="#about"
-        aria-label="Scroll to about section"
+        href="#work"
+        aria-label={t.scroll}
         initial={{ opacity: 0 }}
         animate={ready ? { opacity: 1 } : undefined}
         transition={{ delay: 1.2, duration: 0.8, ease }}

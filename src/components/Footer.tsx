@@ -1,12 +1,13 @@
 import { LogoMark, LogoWordmark } from "./Logo";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export default function Footer() {
+export default function Footer({ t }: { t: Dictionary["footer"] }) {
   return (
     <footer className="relative border-t border-border px-6 py-8">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 text-xs text-muted sm:flex-row">
         <a
           href="#top"
-          aria-label="Lydia Groza — back to top"
+          aria-label="Lydia Groza"
           className="group flex items-center gap-3"
         >
           <LogoMark className="text-lg text-foreground" />
@@ -14,14 +15,13 @@ export default function Footer() {
           <LogoWordmark className="text-[13px]" />
         </a>
         <p className="text-center">
-          © {new Date().getFullYear()} Lydia Groza · Brașov, Romania. Built
-          with Next.js.
+          © {new Date().getFullYear()} Lydia Groza · {t.rights}
         </p>
         <a
           href="#top"
           className="transition-colors hover:text-accent"
         >
-          Back to top ↑
+          {t.top}
         </a>
       </div>
     </footer>
