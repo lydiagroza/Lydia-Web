@@ -68,7 +68,7 @@ export default function ParticleField() {
           const b = particles[j];
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
           if (dist < LINK_DIST) {
-            ctx.strokeStyle = `rgba(45, 212, 167, ${0.14 * (1 - dist / LINK_DIST)})`;
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.14 * (1 - dist / LINK_DIST)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -79,7 +79,7 @@ export default function ParticleField() {
 
         const distm = Math.hypot(a.x - mouse.x, a.y - mouse.y);
         if (distm < MOUSE_DIST) {
-          ctx.strokeStyle = `rgba(45, 212, 167, ${0.4 * (1 - distm / MOUSE_DIST)})`;
+          ctx.strokeStyle = `rgba(99, 102, 241, ${0.4 * (1 - distm / MOUSE_DIST)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);

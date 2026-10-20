@@ -61,7 +61,7 @@ export default function IntroSplash() {
               initial={{ scale: 0.3, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.55, duration: 1.4, ease }}
-              className="absolute left-1/2 top-1/2 -ml-[300px] -mt-[300px] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(79,70,229,0.32),rgba(45,212,167,0.07)_45%,transparent_70%)] blur-2xl"
+              className="absolute left-1/2 top-1/2 -ml-[300px] -mt-[300px] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(79,70,229,0.32),rgba(79,70,229,0.08)_45%,transparent_70%)] blur-2xl"
             />
           </motion.div>
         )}

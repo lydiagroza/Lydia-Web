@@ -39,7 +39,7 @@ export default function Hero() {
         <motion.div variants={item} className="relative mb-7">
           <div
             aria-hidden
-            className="absolute -inset-3 rounded-full bg-teal/20 blur-2xl"
+            className="absolute -inset-3 rounded-full bg-indigo/30 blur-2xl"
           />
           <div className="relative h-24 w-24 sm:h-28 sm:w-28">
             <Image

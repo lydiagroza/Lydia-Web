@@ -14,7 +14,7 @@ export default function Home() {
       <IntroSplash />
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(45,212,167,0.07),transparent_70%)]"
+        className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(79,70,229,0.13),transparent_70%)]"
       />
       <ParticleField />
       <Nav />
