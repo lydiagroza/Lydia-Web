@@ -29,8 +29,8 @@ export const projects: Project[] = [
   {
     title: "CodeSplainer",
     description: {
-      en: "AI-powered repository explorer with a RAG pipeline, vector search, and an LLM-driven chat interface over any codebase. Built in a team of 8 — owned the backend service.",
-      ro: "Explorator de repository-uri bazat pe AI, cu pipeline RAG, căutare vectorială și o interfață de chat cu LLM peste orice codebase. Construit într-o echipă de 8 — m-am ocupat de serviciul de backend.",
+      en: "AI-powered repository explorer with a RAG pipeline, vector search, and an LLM-driven chat interface over any codebase. Built in a team of 8 — I worked on the backend.",
+      ro: "Explorator de repository-uri bazat pe AI, cu pipeline RAG, căutare vectorială și o interfață de chat cu LLM peste orice codebase. Construit într-o echipă de 8 — am lucrat pe partea de backend.",
     },
     stack: ["Python", "NestJS", "FastAPI", "ChromaDB", "Docker"],
     href: "https://github.com/titelaex/krontech-proiect",
@@ -70,8 +70,8 @@ export const projects: Project[] = [
   {
     title: "7 Wonders Duel",
     description: {
-      en: "A from-scratch implementation of the board game — a game engine decoupled into its own library, a Qt6 GUI, a console client, and an AI opponent.",
-      ro: "Implementare de la zero a jocului de societate — motor de joc separat într-o bibliotecă proprie, interfață Qt6, client de consolă și un adversar AI.",
+      en: "A from-scratch implementation of the board game — a game engine decoupled into its own library, a Qt6 GUI, a console client, and an AI opponent. Built in a team of 4.",
+      ro: "Implementare de la zero a jocului de societate — motor de joc separat într-o bibliotecă proprie, interfață Qt6, client de consolă și un adversar AI. Construit într-o echipă de 4.",
     },
     stack: ["C++", "Qt6", "CMake"],
     href: "https://github.com/lydiagroza/ProjectMC",
