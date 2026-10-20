@@ -10,58 +10,22 @@ import SectionHeading from "./SectionHeading";
 
 type T = Dictionary["websites"];
 
-// Stand-in preview for a platform that sits behind a login: a sketch of its
-// schedule view rather than a screenshot of the sign-in page.
-function PrivatePreview({ label }: { label: string }) {
-  return (
-    <div className="relative flex h-full flex-col gap-3 bg-[radial-gradient(120%_90%_at_0%_0%,rgba(79,70,229,0.28),transparent_60%)] p-5 sm:p-6">
-      <div aria-hidden className="flex items-center justify-between">
-        <div className="flex gap-1.5">
-          {["w-14", "w-16", "w-11"].map((w, i) => (
-            <span
-              key={w}
-              className={`h-5 ${w} rounded-full ${i === 0 ? "bg-indigo/70" : "bg-foreground/10"}`}
-            />
-          ))}
-        </div>
-        <span className="font-code text-xs text-accent">14/18</span>
-      </div>
-      <div aria-hidden className="grid flex-1 grid-cols-7 gap-1.5">
-        {Array.from({ length: 28 }, (_, i) => (
-          <span
-            key={i}
-            className={`rounded-md ${
-              [2, 4, 9, 11, 16, 18, 23].includes(i)
-                ? "bg-indigo/45"
-                : [25].includes(i)
-                  ? "bg-coral/40"
-                  : "bg-foreground/[0.06]"
-            }`}
-          />
-        ))}
-      </div>
-      <p className="flex items-center gap-1.5 text-xs text-muted">
-        <Lock size={12} />
-        {label}
-      </p>
-    </div>
-  );
-}
-
 function WebsiteCard({ site, t, index }: { site: WebsiteView; t: T; index: number }) {
   const body = (
     <>
       <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-foreground/[0.03]">
-        {site.image ? (
-          <Image
-            src={site.image}
-            alt={site.name}
-            fill
-            sizes="(min-width: 1024px) 480px, (min-width: 640px) 50vw, 100vw"
-            className="object-cover object-top transition-transform duration-[900ms] group-hover:scale-[1.03]"
-          />
-        ) : (
-          <PrivatePreview label={t.private} />
+        <Image
+          src={site.image}
+          alt={site.name}
+          fill
+          sizes="(min-width: 1024px) 480px, (min-width: 640px) 50vw, 100vw"
+          className="object-cover object-top transition-transform duration-[900ms] group-hover:scale-[1.03]"
+        />
+        {!site.href && (
+          <span className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full border border-border bg-background/85 px-2.5 py-1 text-xs text-muted backdrop-blur-sm">
+            <Lock size={12} />
+            {t.private}
+          </span>
         )}
       </div>
 

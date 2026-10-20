@@ -7,7 +7,7 @@ export type Website = {
   stack: string[];
   // Omitted for private platforms that can't be visited.
   href?: string;
-  image?: string;
+  image: string;
 };
 
 export type WebsiteView = Omit<Website, "description"> & { description: string };
@@ -37,6 +37,7 @@ export const websites: Website[] = [
       ro: "Platformă de management pentru un centru de terapie pentru copii. Părinții, terapeuții și administratorii au fiecare propria vedere asupra orarului, abonamentelor lunare, recuperărilor și istoricului complet al fiecărui copil.",
     },
     stack: ["Astro", "React", "PostgreSQL", "Prisma"],
+    image: "/work/spectrum.jpg",
   },
   {
     name: "Purpur Coffee",
