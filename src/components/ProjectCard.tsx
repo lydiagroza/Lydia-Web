@@ -25,7 +25,7 @@ export default function ProjectCard({
         y: -4,
         transition: { type: "spring", stiffness: 300, damping: 24 },
       }}
-      className={`group relative flex flex-col ${project.wide ? "lg:col-span-2" : ""} overflow-hidden rounded-xl border border-border bg-background/80 p-6 backdrop-blur-sm transition-[border-color,box-shadow] duration-500 hover:border-accent/50 hover:shadow-[0_8px_40px_-12px_rgba(79,70,229,0.35)]`}
+      className={`group relative flex flex-col ${project.wide === "sm" ? "sm:col-span-2" : project.wide === "lg" ? "lg:col-span-2" : ""} overflow-hidden rounded-xl border border-border bg-background/80 p-6 backdrop-blur-sm transition-[border-color,box-shadow] duration-500 hover:border-accent/50 hover:shadow-[0_8px_40px_-12px_rgba(79,70,229,0.35)]`}
     >
       {project.featured && (
         <span

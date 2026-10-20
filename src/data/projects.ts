@@ -9,8 +9,9 @@ export type Project = {
   href: string;
   badge?: Localized;
   featured?: boolean;
-  // Spans two columns on large screens.
-  wide?: boolean;
+  // Spans two grid columns: "sm" from two columns up, "lg" only in the
+  // three-column layout. Used to keep every row of the grid full.
+  wide?: "sm" | "lg";
 };
 
 // A project with its text resolved for one locale.
@@ -36,7 +37,7 @@ export const projects: Project[] = [
     href: "https://github.com/titelaex/krontech-proiect",
     badge: { en: "1st place, Krontech Challenge", ro: "Locul 1, Krontech Challenge" },
     featured: true,
-    wide: true,
+    wide: "sm",
   },
   {
     title: "Remanage",
@@ -57,15 +58,7 @@ export const projects: Project[] = [
     stack: ["C#", "Avalonia UI", ".NET 10", "SQL Server"],
     href: "https://github.com/lydiagroza/OnlineRestaurant",
     featured: true,
-  },
-  {
-    title: "Image Processing App",
-    description: {
-      en: "Desktop app for digital image processing: filters, thresholding, segmentation, morphological operations, and geometric transformations.",
-      ro: "Aplicație desktop pentru procesarea digitală a imaginilor: filtre, binarizare, segmentare, operații morfologice și transformări geometrice.",
-    },
-    stack: ["C#", "Avalonia UI", "Emgu CV"],
-    href: "https://github.com/lydiagroza/Proiect_PID",
+    wide: "lg",
   },
   {
     title: "7 Wonders Duel",
