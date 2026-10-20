@@ -6,7 +6,8 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
 const TO = 'lydiagroza@gmail.com';
-const FROM = 'Lydia Groza Website <no-reply@lydiagrozaweb.com>';
+const FROM_ADDRESS = 'no-reply@lydiagrozaweb.com';
+const FROM = 'Lydia Groza Website <' . FROM_ADDRESS . '>';
 const MAX_PER_HOUR = 5;
 
 function respond(int $code, array $body): void {
@@ -60,7 +61,10 @@ $headers = [
     'X-Mailer' => 'lydiagrozaweb.com contact form',
 ];
 
-if (!mail(TO, $subject, $body, $headers)) {
+// -f sets the envelope sender. Without it the server sends as the cPanel
+// user at the host's own domain, so Gmail checks SPF/DKIM for that domain
+// instead of lydiagrozaweb.com and the message fails DMARC.
+if (!mail(TO, $subject, $body, $headers, '-f' . FROM_ADDRESS)) {
     respond(500, ['ok' => false, 'error' => 'send_failed']);
 }
 
