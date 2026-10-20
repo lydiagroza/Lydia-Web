@@ -105,7 +105,7 @@ const en = {
   contact: {
     eyebrow: "Contact",
     title: "Need a website?",
-    body: "I build those. Tell me a bit about your project and I'll get back to you — or email, call, or message me on WhatsApp. Also happy to hear about internships, collabs, or anything else code-related.",
+    body: "I build those. Tell me a bit about your project and I'll get back to you — email, call, or message me on WhatsApp. Also happy to hear about internships, collabs, or anything else code-related.",
     email: "Email me",
     whatsapp: "WhatsApp",
     whatsappText: "Hi Lydia! I'm interested in a website.",
@@ -233,7 +233,7 @@ const ro: Dictionary = {
   contact: {
     eyebrow: "Contact",
     title: "Ai nevoie de un site?",
-    body: "Asta fac. Spune-mi câteva lucruri despre proiectul tău și îți răspund cât de curând — sau scrie-mi pe email, sună-mă ori trimite-mi un mesaj pe WhatsApp. Mă bucur să aud și despre internshipuri, colaborări sau orice altceva legat de programare.",
+    body: "Asta fac. Spune-mi câteva lucruri despre proiectul tău și îți răspund cât de curând — scrie-mi pe email, sună-mă ori trimite-mi un mesaj pe WhatsApp. Mă bucur să aud și despre internshipuri, colaborări sau orice altceva legat de programare.",
     email: "Trimite un email",
     whatsapp: "WhatsApp",
     whatsappText: "Bună, Lydia! Aș vrea un site.",
