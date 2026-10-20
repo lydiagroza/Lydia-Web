@@ -6,6 +6,7 @@
   --muted: #9aa39d;
   --teal: #2dd4a7;
   --coral: #ff7a52;
+  --indigo: #4f46e5;
   --border: rgba(242, 243, 242, 0.1);
 }
 
@@ -15,9 +16,12 @@
   --color-muted: var(--muted);
   --color-teal: var(--teal);
   --color-coral: var(--coral);
+  --color-indigo: var(--indigo);
   --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-space-grotesk);
+  --font-code: var(--font-jetbrains-mono);
 }
 
 html {
@@ -29,6 +33,10 @@ html {
   html {
     scroll-behavior: auto;
   }
+}
+
+[data-intro="skip"] .intro-overlay {
+  display: none;
 }
 
 body {

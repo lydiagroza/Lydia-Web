@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
+import { useIntro } from "./IntroProvider";
 
 const container = {
   hidden: {},
@@ -22,6 +23,8 @@ const item = {
 };
 
 export default function Hero() {
+  const { ready } = useIntro();
+
   return (
     <section
       id="top"
@@ -30,7 +33,7 @@ export default function Hero() {
       <motion.div
         variants={container}
         initial="hidden"
-        animate="show"
+        animate={ready ? "show" : "hidden"}
         className="flex flex-col items-center"
       >
         <motion.div variants={item} className="relative mb-7">
@@ -119,7 +122,7 @@ export default function Hero() {
         href="#about"
         aria-label="Scroll to about section"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={ready ? { opacity: 1 } : undefined}
         transition={{ delay: 1.4, duration: 0.8 }}
         className="absolute bottom-8 text-muted/60 transition-colors hover:text-teal"
       >

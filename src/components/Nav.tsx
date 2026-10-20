@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useIntro } from "./IntroProvider";
+import { LogoMark, LogoWordmark } from "./Logo";
 
 const links = [
   { href: "#about", label: "About" },
@@ -12,6 +14,7 @@ const links = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { ready, played } = useIntro();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -21,12 +24,9 @@ export default function Nav() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    <header
       className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
-        scrolled || open
+        ready && (scrolled || open)
           ? "backdrop-blur-md bg-background/70 border-b border-border"
           : "border-b border-transparent"
       }`}
@@ -34,12 +34,39 @@ export default function Nav() {
       <nav className="mx-auto max-w-5xl px-6 h-16 flex items-center justify-between">
         <a
           href="#top"
-          className="font-mono text-sm tracking-tight text-foreground/90 hover:text-teal transition-colors"
+          aria-label="Lydia Groza — back to top"
+          className="group flex items-center gap-3"
         >
-          lydia<span className="text-teal">.</span>groza
+          {ready ? (
+            <motion.span
+              layoutId={played ? "brand-mark" : undefined}
+              initial={played ? false : { opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 110, damping: 19 }}
+              className="flex text-[22px] text-foreground"
+            >
+              <LogoMark />
+            </motion.span>
+          ) : (
+            <LogoMark className="invisible text-[22px]" />
+          )}
+          <motion.span
+            initial={{ opacity: 0, x: -8 }}
+            animate={ready ? { opacity: 1, x: 0 } : undefined}
+            transition={{ delay: played ? 0.45 : 0.1, duration: 0.5, ease: "easeOut" }}
+            className="hidden items-center gap-3 sm:flex"
+          >
+            <span aria-hidden className="h-6 w-px bg-border" />
+            <LogoWordmark className="text-[15px] transition-opacity group-hover:opacity-80" />
+          </motion.span>
         </a>
 
-        <ul className="hidden sm:flex items-center gap-8 text-sm text-muted">
+        <motion.ul
+          initial={{ opacity: 0, y: -12 }}
+          animate={ready ? { opacity: 1, y: 0 } : undefined}
+          transition={{ delay: played ? 0.35 : 0, duration: 0.6, ease: "easeOut" }}
+          className="hidden sm:flex items-center gap-8 text-sm text-muted"
+        >
           {links.map((link) => (
             <li key={link.href}>
               <a
@@ -50,9 +77,12 @@ export default function Nav() {
               </a>
             </li>
           ))}
-        </ul>
+        </motion.ul>
 
-        <button
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={ready ? { opacity: 1 } : undefined}
+          transition={{ delay: played ? 0.35 : 0, duration: 0.6 }}
           onClick={() => setOpen((v) => !v)}
           className="sm:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
@@ -67,7 +97,7 @@ export default function Nav() {
           <span
             className={`h-px w-6 bg-foreground transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`}
           />
-        </button>
+        </motion.button>
       </nav>
 
       <AnimatePresence>
@@ -92,6 +122,6 @@ export default function Nav() {
           </motion.ul>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
