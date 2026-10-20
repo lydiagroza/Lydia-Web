@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ease } from "@/lib/motion";
 import { ArrowUpRight, Trophy } from "lucide-react";
 import type { Project } from "@/data/projects";
 
@@ -19,14 +20,17 @@ export default function ProjectCard({
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: "easeOut" }}
-      whileHover={{ y: -3 }}
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background/80 p-6 backdrop-blur-sm transition-[border-color,box-shadow] hover:border-teal/50 hover:shadow-[0_8px_40px_-12px_rgba(45,212,167,0.25)]"
+      transition={{ duration: 0.8, delay: (index % 3) * 0.1, ease }}
+      whileHover={{
+        y: -4,
+        transition: { type: "spring", stiffness: 300, damping: 24 },
+      }}
+      className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background/80 p-6 backdrop-blur-sm transition-[border-color,box-shadow] duration-500 hover:border-accent/50 hover:shadow-[0_8px_40px_-12px_rgba(79,70,229,0.35)]"
     >
       {project.featured && (
         <span
           aria-hidden
-          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal/60 to-transparent"
+          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent"
         />
       )}
 
@@ -36,7 +40,7 @@ export default function ProjectCard({
         </h3>
         <ArrowUpRight
           size={18}
-          className="mt-1 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal"
+          className="mt-1 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
         />
       </div>
 

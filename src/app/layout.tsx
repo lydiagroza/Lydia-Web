@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08090a",
+  themeColor: "#08090c",
 };
 
 export default function RootLayout({
@@ -74,7 +74,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-teal">
+      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-accent">
         <script dangerouslySetInnerHTML={{ __html: introScript }} />
         <noscript>
           <style>{`.intro-overlay{display:none}`}</style>

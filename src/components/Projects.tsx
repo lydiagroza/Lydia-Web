@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ease } from "@/lib/motion";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 import SectionHeading from "./SectionHeading";
@@ -13,7 +14,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease }}
           className="mb-12"
         >
           <SectionHeading
@@ -40,7 +41,7 @@ export default function Projects() {
             href="https://github.com/lydiagroza"
             target="_blank"
             rel="noreferrer"
-            className="text-sm text-muted underline decoration-border underline-offset-4 transition-colors hover:text-teal hover:decoration-teal"
+            className="text-sm text-muted underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
           >
             See everything else on GitHub →
           </a>

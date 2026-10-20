@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ease } from "@/lib/motion";
 import SectionHeading from "./SectionHeading";
 
 const skills = [
@@ -25,7 +26,7 @@ const fadeUp = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const },
+    transition: { duration: 0.8, ease },
   },
 };
 
@@ -73,7 +74,7 @@ export default function About() {
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-teal/40 hover:text-foreground"
+                className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-accent/40 hover:text-foreground"
               >
                 {skill}
               </span>

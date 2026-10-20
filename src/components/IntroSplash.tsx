@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ease } from "@/lib/motion";
 import { useIntro } from "./IntroProvider";
 import { chevronPaths, chevronSvgProps } from "./Logo";
 
-const ease = [0.22, 1, 0.36, 1] as const;
 const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/{}#*_";
 
 // Decodes `text` left to right out of random glyphs, like a terminal.

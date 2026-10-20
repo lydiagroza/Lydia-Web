@@ -12,13 +12,13 @@ export default function SectionHeading({
   return (
     <div className={centered ? "text-center" : ""}>
       <p
-        className={`mb-3 flex items-center gap-3 font-mono text-sm text-teal ${
+        className={`mb-3 flex items-center gap-3 font-mono text-sm text-accent ${
           centered ? "justify-center" : ""
         }`}
       >
-        <span aria-hidden className="h-px w-8 bg-teal/50" />
+        <span aria-hidden className="h-px w-8 bg-accent/50" />
         {eyebrow}
-        {centered && <span aria-hidden className="h-px w-8 bg-teal/50" />}
+        {centered && <span aria-hidden className="h-px w-8 bg-accent/50" />}
       </p>
       <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
         {title}

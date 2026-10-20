@@ -19,7 +19,7 @@ export default function Footer() {
         </p>
         <a
           href="#top"
-          className="transition-colors hover:text-teal"
+          className="transition-colors hover:text-accent"
         >
           Back to top ↑
         </a>

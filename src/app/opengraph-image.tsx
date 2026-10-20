@@ -15,9 +15,9 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "flex-start",
-          background: "#08090a",
+          background: "#08090c",
           backgroundImage:
-            "radial-gradient(circle at 50% -20%, rgba(45, 212, 167, 0.18), transparent 60%)",
+            "radial-gradient(circle at 50% -20%, rgba(79, 70, 229, 0.3), transparent 60%)",
           padding: "96px",
           fontFamily: "sans-serif",
         }}
@@ -27,12 +27,12 @@ export default function Image() {
             display: "flex",
             alignItems: "center",
             gap: "16px",
-            color: "#2dd4a7",
+            color: "#8b8ff8",
             fontSize: 28,
             marginBottom: 28,
           }}
         >
-          <div style={{ width: 48, height: 2, background: "#2dd4a7" }} />
+          <div style={{ width: 48, height: 2, background: "#8b8ff8" }} />
           Portfolio
         </div>
         <div
@@ -40,19 +40,19 @@ export default function Image() {
             display: "flex",
             fontSize: 96,
             fontWeight: 700,
-            color: "#f2f3f2",
+            color: "#f1f2f6",
             letterSpacing: "-0.03em",
           }}
         >
           Lydia Groza
-          <span style={{ color: "#2dd4a7" }}>.</span>
+          <span style={{ color: "#8b8ff8" }}>.</span>
         </div>
         <div
           style={{
             display: "flex",
             marginTop: 28,
             fontSize: 36,
-            color: "#9aa39d",
+            color: "#9b9eb3",
             maxWidth: 900,
             lineHeight: 1.4,
           }}
@@ -65,7 +65,7 @@ export default function Image() {
             display: "flex",
             marginTop: 64,
             fontSize: 26,
-            color: "#5c655f",
+            color: "#5d6075",
           }}
         >
           Brașov, Romania · github.com/lydiagroza

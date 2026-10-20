@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ease } from "@/lib/motion";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
@@ -18,7 +19,7 @@ const item = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
+    transition: { duration: 0.8, ease },
   },
 };
 
@@ -55,11 +56,11 @@ export default function Hero() {
 
         <motion.p
           variants={item}
-          className="mb-5 flex items-center gap-2 rounded-full border border-teal/25 bg-teal/10 px-4 py-1.5 text-xs font-medium text-teal"
+          className="mb-5 flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-4 py-1.5 text-xs font-medium text-accent"
         >
           <span
             aria-hidden
-            className="h-1.5 w-1.5 rounded-full bg-teal motion-safe:animate-pulse"
+            className="h-1.5 w-1.5 rounded-full bg-accent motion-safe:animate-pulse"
           />
           Open to freelance & internships
         </motion.p>
@@ -68,7 +69,7 @@ export default function Hero() {
           variants={item}
           className="text-5xl sm:text-6xl font-semibold tracking-tight text-foreground"
         >
-          Lydia Groza<span className="text-teal">.</span>
+          Lydia Groza<span className="text-accent">.</span>
         </motion.h1>
 
         <motion.p
@@ -87,13 +88,13 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="whitespace-nowrap rounded-md bg-teal px-5 py-2.5 text-sm font-medium text-background transition-colors hover:bg-teal/85"
+            className="whitespace-nowrap rounded-md bg-indigo px-5 py-2.5 text-sm font-medium text-white shadow-[0_8px_24px_-10px_rgba(79,70,229,0.8)] transition-[background-color,box-shadow,translate] hover:-translate-y-px hover:bg-indigo-bright hover:shadow-[0_10px_30px_-8px_rgba(79,70,229,0.9)]"
           >
             See my work
           </a>
           <a
             href="#contact"
-            className="whitespace-nowrap rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-teal/50 hover:text-teal"
+            className="whitespace-nowrap rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50 hover:text-accent"
           >
             Get in touch
           </a>
@@ -101,7 +102,7 @@ export default function Hero() {
             href="https://github.com/lydiagroza"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-teal hover:text-teal"
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent"
             aria-label="GitHub"
           >
             <GithubIcon size={18} />
@@ -110,7 +111,7 @@ export default function Hero() {
             href="https://www.linkedin.com/in/lydiagroza/"
             target="_blank"
             rel="noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-teal hover:text-teal"
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent"
             aria-label="LinkedIn"
           >
             <LinkedinIcon size={18} />
@@ -123,8 +124,8 @@ export default function Hero() {
         aria-label="Scroll to about section"
         initial={{ opacity: 0 }}
         animate={ready ? { opacity: 1 } : undefined}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-8 text-muted/60 transition-colors hover:text-teal"
+        transition={{ delay: 1.2, duration: 0.8, ease }}
+        className="absolute bottom-8 text-muted/60 transition-colors hover:text-accent"
       >
         <ChevronDown size={22} className="motion-safe:animate-bounce" />
       </motion.a>

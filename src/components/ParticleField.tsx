@@ -46,15 +46,21 @@ export default function ParticleField() {
 
     const LINK_DIST = 130;
     const MOUSE_DIST = 170;
-    const mouse = { x: -9999, y: -9999 };
+    // The cursor links trail the pointer and fade in/out rather than snapping.
+    const target = { x: 0, y: 0, strength: 0 };
+    const mouse = { x: 0, y: 0, strength: 0 };
 
     const onMove = (e: PointerEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+      if (mouse.strength < 0.01) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      }
+      target.x = e.clientX;
+      target.y = e.clientY;
+      target.strength = 1;
     };
     const onLeave = () => {
-      mouse.x = -9999;
-      mouse.y = -9999;
+      target.strength = 0;
     };
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("pointerleave", onLeave, { passive: true });
@@ -78,8 +84,8 @@ export default function ParticleField() {
         }
 
         const distm = Math.hypot(a.x - mouse.x, a.y - mouse.y);
-        if (distm < MOUSE_DIST) {
-          ctx.strokeStyle = `rgba(99, 102, 241, ${0.4 * (1 - distm / MOUSE_DIST)})`;
+        if (mouse.strength > 0.01 && distm < MOUSE_DIST) {
+          ctx.strokeStyle = `rgba(99, 102, 241, ${0.4 * mouse.strength * (1 - distm / MOUSE_DIST)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -87,12 +93,14 @@ export default function ParticleField() {
           ctx.stroke();
         }
 
-        ctx.fillStyle = "rgba(242, 243, 242, 0.45)";
+        ctx.fillStyle = "rgba(241, 242, 246, 0.45)";
         ctx.beginPath();
         ctx.arc(a.x, a.y, 1.3, 0, Math.PI * 2);
         ctx.fill();
       }
     };
+
+    canvas.style.opacity = "1";
 
     if (prefersReducedMotion) {
       draw();
@@ -109,6 +117,9 @@ export default function ParticleField() {
     const tick = () => {
       frame = requestAnimationFrame(tick);
       if (!running) return;
+      mouse.x += (target.x - mouse.x) * 0.15;
+      mouse.y += (target.y - mouse.y) * 0.15;
+      mouse.strength += (target.strength - mouse.strength) * 0.08;
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
@@ -132,7 +143,7 @@ export default function ParticleField() {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none fixed inset-0 -z-10"
+      className="pointer-events-none fixed inset-0 -z-10 opacity-0 transition-opacity duration-[1500ms]"
     />
   );
 }

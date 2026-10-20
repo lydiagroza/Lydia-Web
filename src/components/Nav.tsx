@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ease } from "@/lib/motion";
 import { useIntro } from "./IntroProvider";
 import { LogoMark, LogoWordmark } from "./Logo";
 
@@ -25,7 +26,7 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
         ready && (scrolled || open)
           ? "backdrop-blur-md bg-background/70 border-b border-border"
           : "border-b border-transparent"
@@ -53,7 +54,7 @@ export default function Nav() {
           <motion.span
             initial={{ opacity: 0, x: -8 }}
             animate={ready ? { opacity: 1, x: 0 } : undefined}
-            transition={{ delay: played ? 0.45 : 0.1, duration: 0.5, ease: "easeOut" }}
+            transition={{ delay: played ? 0.45 : 0.1, duration: 0.6, ease }}
             className="hidden items-center gap-3 sm:flex"
           >
             <span aria-hidden className="h-6 w-px bg-border" />
@@ -64,14 +65,14 @@ export default function Nav() {
         <motion.ul
           initial={{ opacity: 0, y: -12 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
-          transition={{ delay: played ? 0.35 : 0, duration: 0.6, ease: "easeOut" }}
+          transition={{ delay: played ? 0.35 : 0, duration: 0.7, ease }}
           className="hidden sm:flex items-center gap-8 text-sm text-muted"
         >
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="relative hover:text-foreground transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-teal after:transition-all hover:after:w-full"
+                className="relative hover:text-foreground transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all hover:after:w-full"
               >
                 {link.label}
               </a>
