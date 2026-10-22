@@ -70,15 +70,6 @@ export const projects: Project[] = [
     href: "https://github.com/lydiagroza/ProjectMC",
   },
   {
-    title: "SmartKnob",
-    description: {
-      en: "A physical smart knob with haptic feedback — firmware and control loop for a motorized rotary input device.",
-      ro: "Un buton rotativ inteligent cu feedback haptic — firmware și buclă de control pentru un dispozitiv de intrare motorizat.",
-    },
-    stack: ["C++", "Embedded"],
-    href: "https://github.com/lydiagroza/SmartKnob",
-  },
-  {
     title: "Secure Chat (TCP)",
     description: {
       en: "An encrypted chat client/server built directly on top of TCP sockets, exploring handshake and message-framing design from scratch.",
@@ -95,5 +86,6 @@ export const projects: Project[] = [
     },
     stack: ["C#", "UDP", "Networking"],
     href: "https://github.com/lydiagroza/reliable-udp",
+    wide: "sm",
   },
 ];

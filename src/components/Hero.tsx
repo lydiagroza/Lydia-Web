@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import { ease } from "@/lib/motion";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./icons";
+import { ChevronDown, Mail, MessageCircle, Phone } from "lucide-react";
 import { useIntro } from "./IntroProvider";
 import type { Dictionary } from "@/i18n/dictionaries";
 
@@ -24,13 +23,16 @@ const item = {
   },
 };
 
+const direct =
+  "flex items-center gap-2 transition-colors hover:text-accent";
+
 export default function Hero({ t }: { t: Dictionary["hero"] }) {
   const { ready } = useIntro();
 
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center"
+      className="relative flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center"
     >
       <motion.div
         variants={container}
@@ -66,16 +68,24 @@ export default function Hero({ t }: { t: Dictionary["hero"] }) {
           {t.badge}
         </motion.p>
 
+        <motion.p
+          variants={item}
+          className="font-mono text-sm text-muted"
+        >
+          {t.name}
+        </motion.p>
+
         <motion.h1
           variants={item}
-          className="font-display text-5xl sm:text-6xl font-semibold tracking-tight text-foreground"
+          className="mt-3 max-w-3xl text-balance font-display text-4xl sm:text-6xl font-semibold tracking-tight text-foreground"
         >
-          Lydia Groza<span className="text-accent">.</span>
+          {t.title}
+          <span className="text-accent">.</span>
         </motion.h1>
 
         <motion.p
           variants={item}
-          className="mt-5 max-w-lg text-balance text-lg text-muted"
+          className="mt-5 max-w-xl text-balance text-lg text-muted"
         >
           {t.intro}
         </motion.p>
@@ -85,40 +95,45 @@ export default function Hero({ t }: { t: Dictionary["hero"] }) {
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <a
-            href="#work"
-            className="whitespace-nowrap rounded-md bg-indigo px-5 py-2.5 text-sm font-medium text-white shadow-[0_8px_24px_-10px_rgba(79,70,229,0.8)] transition-[background-color,box-shadow,translate] hover:-translate-y-px hover:bg-indigo-bright hover:shadow-[0_10px_30px_-8px_rgba(79,70,229,0.9)]"
-          >
-            {t.ctaWork}
-          </a>
-          <a
             href="#contact"
-            className="whitespace-nowrap rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50 hover:text-accent"
+            className="whitespace-nowrap rounded-md bg-indigo px-6 py-3 text-sm font-medium text-white shadow-[0_8px_24px_-10px_rgba(79,70,229,0.8)] transition-[background-color,box-shadow,translate] hover:-translate-y-px hover:bg-indigo-bright hover:shadow-[0_10px_30px_-8px_rgba(79,70,229,0.9)]"
           >
             {t.ctaContact}
           </a>
           <a
-            href="https://github.com/lydiagroza"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent sm:flex"
-            aria-label="GitHub"
+            href="#work"
+            className="whitespace-nowrap rounded-md border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent/50 hover:text-accent"
           >
-            <GithubIcon size={18} />
+            {t.ctaWork}
           </a>
-          <a
-            href="https://www.linkedin.com/in/lydiagroza/"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden h-10 w-10 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent sm:flex"
-            aria-label="LinkedIn"
-          >
-            <LinkedinIcon size={18} />
-          </a>
+        </motion.div>
+
+        <motion.div variants={item} className="mt-8 flex flex-col items-center gap-3">
+          <p className="font-mono text-xs text-muted">{t.direct}</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
+            <a
+              href={`https://wa.me/40723040958?text=${encodeURIComponent(t.whatsappText)}`}
+              target="_blank"
+              rel="noreferrer"
+              className={direct}
+            >
+              <MessageCircle size={16} />
+              {t.whatsapp}
+            </a>
+            <a href="tel:+40723040958" className={direct}>
+              <Phone size={16} />
+              {t.call}
+            </a>
+            <a href="mailto:lydiagroza@gmail.com" className={direct}>
+              <Mail size={16} />
+              {t.email}
+            </a>
+          </div>
         </motion.div>
       </motion.div>
 
       <motion.a
-        href="#work"
+        href="#services"
         aria-label={t.scroll}
         initial={{ opacity: 0 }}
         animate={ready ? { opacity: 1 } : undefined}

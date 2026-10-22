@@ -7,7 +7,7 @@ import { useIntro } from "./IntroProvider";
 import { LogoMark, LogoWordmark } from "./Logo";
 import { localePath, locales, type Dictionary, type Locale } from "@/i18n/dictionaries";
 
-const sections = ["work", "services", "projects", "about", "contact"] as const;
+const sections = ["services", "work", "projects", "about", "contact"] as const;
 
 // EN · RO toggle. Each language is its own page, so these are plain links.
 function LanguageSwitch({ locale, label }: { locale: Locale; label: string }) {
@@ -98,7 +98,7 @@ export default function Nav({
           initial={{ opacity: 0, y: -12 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
           transition={{ delay: played ? 0.35 : 0, duration: 0.7, ease }}
-          className="flex items-center gap-7"
+          className="flex items-center gap-4 md:gap-7"
         >
         <ul className="hidden md:flex items-center gap-7 text-sm text-muted">
           {links.map((link) => (
@@ -114,6 +114,13 @@ export default function Nav({
         </ul>
 
         <LanguageSwitch locale={locale} label={t.language} />
+
+        <a
+          href="#contact"
+          className="whitespace-nowrap rounded-md bg-indigo px-3.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-indigo-bright sm:text-sm"
+        >
+          {t.cta}
+        </a>
 
         <button
           onClick={() => setOpen((v) => !v)}

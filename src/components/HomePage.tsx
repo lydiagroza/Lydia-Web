@@ -60,11 +60,11 @@ export default function HomePage({ locale }: { locale: Locale }) {
       <Nav locale={locale} t={t.nav} />
       <main className="flex-1">
         <Hero t={t.hero} />
+        <Services t={t.services} />
         <Websites
           t={t.websites}
           websites={websites.map((w) => localizeWebsite(w, locale))}
         />
-        <Services t={t.services} />
         <Projects
           t={t.projects}
           projects={projects.map((p) => localizeProject(p, locale))}
