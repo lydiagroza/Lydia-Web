@@ -22,12 +22,12 @@ const en = {
     home: "Lydia Groza — back to top",
     menu: "Toggle menu",
     language: "Language",
-    cta: "Get a quote",
+    cta: "Get a free quote",
   },
   hero: {
     badge: "Taking on new projects",
     name: "Lydia Groza · Web developer in Brașov",
-    title: "Websites that bring your business more customers",
+    title: "Get a free quote for your website",
     intro:
       "I design and build fast, modern websites for businesses — so people find you on Google, see what you offer, and get in touch.",
     ctaContact: "Get a free quote",
@@ -158,12 +158,12 @@ const ro: Dictionary = {
     home: "Lydia Groza — înapoi sus",
     menu: "Deschide meniul",
     language: "Limba",
-    cta: "Cere ofertă",
+    cta: "Cere o ofertă gratuită",
   },
   hero: {
     badge: "Accept proiecte noi",
     name: "Lydia Groza · Dezvoltator web în Brașov",
-    title: "Site-uri care îi aduc afacerii tale mai mulți clienți",
+    title: "Cere o ofertă gratuită pentru site-ul tău",
     intro:
       "Creez site-uri rapide și moderne pentru afaceri — ca oamenii să te găsească pe Google, să vadă ce oferi și să te contacteze.",
     ctaContact: "Cere o ofertă gratuită",
