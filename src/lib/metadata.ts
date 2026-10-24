@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { dictionaries, localePath, quotePath, type Locale } from "@/i18n/dictionaries";
+import {
+  dictionaries,
+  localePath,
+  quotePath,
+  thanksPath,
+  type Locale,
+} from "@/i18n/dictionaries";
 import { siteUrl } from "@/lib/site";
 
 export const viewport: Viewport = {
@@ -72,5 +78,14 @@ export function buildQuoteMetadata(locale: Locale): Metadata {
       title,
       description,
     },
+  };
+}
+
+// The thank-you page after sending a quote request: kept out of search.
+export function buildThanksMetadata(locale: Locale): Metadata {
+  return {
+    title: dictionaries[locale].quote.thanks.title,
+    robots: { index: false },
+    alternates: { canonical: thanksPath[locale] },
   };
 }

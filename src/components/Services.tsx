@@ -5,6 +5,8 @@ import { CalendarCheck, Coffee, LayoutTemplate } from "lucide-react";
 import { ease } from "@/lib/motion";
 import type { Dictionary } from "@/i18n/dictionaries";
 import SectionHeading from "./SectionHeading";
+import ProcessSteps from "./ProcessSteps";
+import { trackPointer } from "@/lib/spotlight";
 
 const icons = [LayoutTemplate, Coffee, CalendarCheck];
 
@@ -32,7 +34,8 @@ export default function Services({ t }: { t: Dictionary["services"] }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.8, delay: i * 0.1, ease }}
-                className="flex flex-col rounded-xl border border-border bg-background/80 p-6 backdrop-blur-sm"
+                onPointerMove={trackPointer}
+                className="spotlight relative flex flex-col rounded-xl border border-border bg-background/80 p-6 backdrop-blur-sm"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo/15 text-accent">
                   <Icon size={20} />
@@ -57,21 +60,7 @@ export default function Services({ t }: { t: Dictionary["services"] }) {
           className="mt-16"
         >
           <h3 className="mb-6 font-mono text-sm text-muted">{t.processTitle}</h3>
-          <ol className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {t.steps.map((step, i) => (
-              <li key={step.title} className="bg-background p-6">
-                <span className="font-code text-xs text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="mt-2 font-display font-semibold text-foreground">
-                  {step.title}
-                </p>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                  {step.body}
-                </p>
-              </li>
-            ))}
-          </ol>
+          <ProcessSteps steps={t.steps} />
         </motion.div>
       </div>
     </section>

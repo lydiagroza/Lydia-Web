@@ -13,12 +13,15 @@ const field =
 // Posts to contact.php (public/contact.php), which emails the message from
 // the cPanel server.
 // `types` are the project kinds a visitor can pick from (the service titles).
+// After a successful send it goes to `thanksHref`.
 export default function ContactForm({
   t,
   types,
+  thanksHref,
 }: {
   t: Dictionary["contact"]["form"];
   types: string[];
+  thanksHref: string;
 }) {
   const [status, setStatus] = useState<Status>("idle");
 
@@ -43,6 +46,7 @@ export default function ContactForm({
       if (res.ok && json?.ok) {
         setStatus("success");
         form.reset();
+        window.location.assign(thanksHref);
       } else {
         setStatus(res.status === 422 ? "invalid" : "error");
       }

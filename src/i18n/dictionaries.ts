@@ -7,6 +7,13 @@ export const localePath: Record<Locale, string> = { en: "/", ro: "/ro/" };
 // Path of the free-quote page for each locale.
 export const quotePath: Record<Locale, string> = { en: "/quote/", ro: "/ro/oferta/" };
 
+// Where the quote form lands after sending. A page of its own, so analytics
+// can count sent requests as page views.
+export const thanksPath: Record<Locale, string> = {
+  en: "/quote/thanks/",
+  ro: "/ro/oferta/multumesc/",
+};
+
 const en = {
   meta: {
     title: "Lydia Groza — Web Developer in Brașov",
@@ -150,6 +157,11 @@ const en = {
     eyebrow: "Free quote",
     title: "Let's talk about your website",
     lead: "Tell me a bit about your business and what you need. I'll reply with a free, no-obligation quote.",
+    thanks: {
+      title: "Thanks — your request is on its way",
+      body: "I'll get back to you soon with your free quote. If it's urgent, message me on WhatsApp.",
+      home: "Back to the site",
+    },
   },
   footer: {
     rights: "Brașov, Romania. Built with Next.js.",
@@ -301,6 +313,11 @@ const ro: Dictionary = {
     eyebrow: "Ofertă gratuită",
     title: "Hai să vorbim despre site-ul tău",
     lead: "Spune-mi câteva lucruri despre afacerea ta și de ce ai nevoie. Îți răspund cu o ofertă gratuită, fără obligații.",
+    thanks: {
+      title: "Mulțumesc — cererea ta a fost trimisă",
+      body: "Îți răspund curând cu oferta gratuită. Dacă e urgent, scrie-mi pe WhatsApp.",
+      home: "Înapoi la site",
+    },
   },
   footer: {
     rights: "Brașov, România. Construit cu Next.js.",
