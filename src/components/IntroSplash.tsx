@@ -43,7 +43,7 @@ function useScramble(text: string, delay: number, duration: number) {
 
 export default function IntroSplash() {
   const { phase, skip } = useIntro();
-  const descriptor = useScramble("WEB DEVELOPMENT", 1050, 650);
+  const descriptor = useScramble("WEB DEVELOPMENT", 560, 420);
 
   return (
     <>
@@ -53,14 +53,14 @@ export default function IntroSplash() {
             key="intro-bg"
             onClick={skip}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             className="intro-overlay fixed inset-0 z-40 overflow-hidden bg-background"
           >
             <motion.div
               aria-hidden
               initial={{ scale: 0.3, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.55, duration: 1.4, ease }}
+              transition={{ delay: 0.25, duration: 0.9, ease }}
               className="absolute left-1/2 top-1/2 -ml-[300px] -mt-[300px] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(79,70,229,0.32),rgba(79,70,229,0.08)_45%,transparent_70%)] blur-2xl"
             />
           </motion.div>
@@ -82,14 +82,14 @@ export default function IntroSplash() {
                   {...chevronSvgProps}
                   initial={{ x: "0.62em" }}
                   animate={{ x: 0 }}
-                  transition={{ delay: 0.5, type: "spring", stiffness: 160, damping: 15 }}
+                  transition={{ delay: 0.22, type: "spring", stiffness: 200, damping: 17 }}
                   className={`${chevronSvgProps.className} drop-shadow-[0_0_18px_rgba(79,70,229,0.7)]`}
                 >
                   <motion.path
                     d={chevronPaths.left}
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 0.5, ease: [0.65, 0, 0.35, 1] }}
+                    transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
                   />
                 </motion.svg>
                 <span className="flex overflow-hidden px-[0.06em] py-[0.1em]">
@@ -98,7 +98,7 @@ export default function IntroSplash() {
                       key={c}
                       initial={{ y: "115%", filter: "blur(6px)" }}
                       animate={{ y: 0, filter: "blur(0px)" }}
-                      transition={{ delay: 0.6 + i * 0.09, duration: 0.65, ease }}
+                      transition={{ delay: 0.28 + i * 0.07, duration: 0.45, ease }}
                     >
                       {c}
                     </motion.span>
@@ -108,14 +108,14 @@ export default function IntroSplash() {
                   {...chevronSvgProps}
                   initial={{ x: "-0.62em" }}
                   animate={{ x: 0 }}
-                  transition={{ delay: 0.5, type: "spring", stiffness: 160, damping: 15 }}
+                  transition={{ delay: 0.22, type: "spring", stiffness: 200, damping: 17 }}
                   className={`${chevronSvgProps.className} drop-shadow-[0_0_18px_rgba(79,70,229,0.7)]`}
                 >
                   <motion.path
                     d={chevronPaths.right}
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 0.5, ease: [0.65, 0, 0.35, 1] }}
+                    transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
                   />
                 </motion.svg>
               </span>
@@ -127,7 +127,7 @@ export default function IntroSplash() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8, transition: { duration: 0.25 } }}
-                  transition={{ delay: 0.9, duration: 0.6, ease }}
+                  transition={{ delay: 0.45, duration: 0.45, ease }}
                   style={{ x: "-50%" }}
                   className="absolute left-1/2 top-full mt-5 flex w-max flex-col items-center sm:mt-7"
                 >

@@ -83,7 +83,16 @@ export default function Hero({
           variants={item}
           className="mt-3 max-w-3xl text-balance font-display text-4xl sm:text-6xl font-semibold tracking-tight text-foreground"
         >
-          {t.title}
+          {t.title[0]}
+          <motion.span
+            initial={{ backgroundSize: "0% 0.34em" }}
+            animate={ready ? { backgroundSize: "100% 0.34em" } : undefined}
+            transition={{ delay: 1.1, duration: 0.7, ease }}
+            className="box-decoration-clone bg-[linear-gradient(rgba(99,102,241,0.75),rgba(99,102,241,0.75))] bg-[position:0_88%] bg-no-repeat px-[0.04em]"
+          >
+            {t.title[1]}
+          </motion.span>
+          {t.title[2]}
           <span className="text-accent">.</span>
         </motion.h1>
 

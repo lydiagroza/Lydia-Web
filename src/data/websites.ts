@@ -8,6 +8,8 @@ export type Website = {
   // Omitted for private platforms that can't be visited.
   href?: string;
   image: string;
+  // Full-page screenshot (900px wide) that scrolls inside the card.
+  preview?: { src: string; height: number };
 };
 
 export type WebsiteView = Omit<Website, "description"> & { description: string };
@@ -28,6 +30,7 @@ export const websites: Website[] = [
     stack: ["Astro", "React", "Tailwind", "Keystatic CMS"],
     href: "https://ac-consulting-blue.vercel.app",
     image: "/work/ac-consulting.jpg",
+    preview: { src: "/work/ac-consulting-full.jpg", height: 4207 },
   },
   {
     name: "Spectrum Terapia",
@@ -49,6 +52,7 @@ export const websites: Website[] = [
     stack: ["Astro", "React", "Tailwind"],
     href: "https://pur-pur.vercel.app",
     image: "/work/purpur.jpg",
+    preview: { src: "/work/purpur-full.jpg", height: 4128 },
   },
   {
     name: "Ozaki Arena",
@@ -60,5 +64,6 @@ export const websites: Website[] = [
     stack: ["Astro", "React", "Tailwind"],
     href: "https://ozaki-arena.vercel.app",
     image: "/work/ozaki-arena.jpg",
+    preview: { src: "/work/ozaki-arena-full.jpg", height: 3706 },
   },
 ];

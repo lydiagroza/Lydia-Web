@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 
 type Phase = "intro" | "outro" | "done";
 
-const OUTRO_AT = 2000;
+const OUTRO_AT = 1100;
 const OUTRO_DURATION = 350;
 
 const IntroContext = createContext<{

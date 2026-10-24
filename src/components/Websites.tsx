@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Lock } from "lucide-react";
 import { ease } from "@/lib/motion";
 import type { WebsiteView } from "@/data/websites";
@@ -10,17 +11,80 @@ import SectionHeading from "./SectionHeading";
 
 type T = Dictionary["websites"];
 
+// Width the full-page previews were captured at.
+const PREVIEW_WIDTH = 900;
+
+// Fake browser bar so the screenshots read as real, live sites.
+function BrowserBar({ href }: { href?: string }) {
+  return (
+    <div className="flex items-center gap-3 border-b border-border bg-foreground/[0.04] px-3.5 py-2">
+      <span aria-hidden className="flex gap-1.5">
+        <span className="h-2 w-2 rounded-full bg-foreground/15" />
+        <span className="h-2 w-2 rounded-full bg-foreground/15" />
+        <span className="h-2 w-2 rounded-full bg-foreground/15" />
+      </span>
+      {href && (
+        <span className="truncate font-code text-[11px] text-muted">
+          {new URL(href).hostname}
+        </span>
+      )}
+    </div>
+  );
+}
+
+// Scrolls the whole page past on hover (or, on touch screens, once the card
+// is in view), so visitors see the full site instead of just its hero.
+function ScrollingPreview({
+  src,
+  height,
+  alt,
+}: {
+  src: string;
+  height: number;
+  alt: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.7 });
+  // Roughly 1.4s per screen of page, so long and short sites scroll at the
+  // same speed.
+  const seconds = Math.max(3, (height / PREVIEW_WIDTH - 0.625) * 1.4);
+
+  return (
+    <div ref={ref} className="absolute inset-0 [container-type:size]">
+      <Image
+        src={src}
+        alt={alt}
+        width={PREVIEW_WIDTH}
+        height={height}
+        sizes="(min-width: 1024px) 480px, (min-width: 640px) 50vw, 100vw"
+        data-active={inView}
+        style={{ "--scroll-duration": `${seconds}s` } as React.CSSProperties}
+        className="absolute inset-x-0 top-0 h-auto w-full transition-transform duration-700 ease-in-out motion-safe:group-hover:translate-y-[calc(-100%+100cqh)] motion-safe:group-hover:duration-(--scroll-duration) motion-safe:pointer-coarse:data-[active=true]:translate-y-[calc(-100%+100cqh)] motion-safe:pointer-coarse:data-[active=true]:duration-(--scroll-duration)"
+      />
+    </div>
+  );
+}
+
 function WebsiteCard({ site, t, index }: { site: WebsiteView; t: T; index: number }) {
   const body = (
     <>
+      <BrowserBar href={site.href} />
       <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-foreground/[0.03]">
-        <Image
-          src={site.image}
-          alt={site.name}
-          fill
-          sizes="(min-width: 1024px) 480px, (min-width: 640px) 50vw, 100vw"
-          className="object-cover object-top transition-transform duration-[900ms] group-hover:scale-[1.03]"
-        />
+        {site.preview ? (
+          <ScrollingPreview
+            src={site.preview.src}
+            height={site.preview.height}
+            alt={site.name}
+          />
+        ) : (
+          <Image
+            src={site.image}
+            alt={site.name}
+            fill
+            sizes="(min-width: 1024px) 480px, (min-width: 640px) 50vw, 100vw"
+            className="object-cover object-top transition-transform duration-[900ms] group-hover:scale-[1.03]"
+          />
+        )}
         {!site.href && (
           <span className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full border border-border bg-background/85 px-2.5 py-1 text-xs text-muted backdrop-blur-sm">
             <Lock size={12} />

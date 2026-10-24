@@ -30,7 +30,8 @@ const en = {
   hero: {
     badge: "Taking on new projects",
     name: "Lydia Groza · Web developer in Brașov",
-    title: "Get a free quote for your website",
+    // The middle part gets the animated highlight.
+    title: ["Get a ", "free quote", " for your website"],
     intro:
       "I design and build fast, modern websites for businesses — so people find you on Google, see what you offer, and get in touch.",
     ctaContact: "Get a free quote",
@@ -181,7 +182,7 @@ const ro: Dictionary = {
   hero: {
     badge: "Accept proiecte noi",
     name: "Lydia Groza · Dezvoltator web în Brașov",
-    title: "Cere o ofertă gratuită pentru site-ul tău",
+    title: ["Cere o ", "ofertă gratuită", " pentru site-ul tău"],
     intro:
       "Creez site-uri rapide și moderne pentru afaceri — ca oamenii să te găsească pe Google, să vadă ce oferi și să te contacteze.",
     ctaContact: "Cere o ofertă gratuită",
