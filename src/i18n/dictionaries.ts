@@ -18,7 +18,7 @@ const en = {
   meta: {
     title: "Lydia Groza — Web Developer in Brașov",
     description:
-      "Freelance web developer and CS student in Brașov, Romania. I design and build fast, modern websites and web platforms for businesses — plus AI tools and full-stack apps.",
+      "Freelance web developer in Brașov. Fast, modern websites for businesses — designed for phones and set up to be found on Google. Get a free quote.",
     ogLocale: "en_US",
   },
   nav: {
@@ -175,7 +175,7 @@ const ro: Dictionary = {
   meta: {
     title: "Lydia Groza — Dezvoltator web în Brașov",
     description:
-      "Dezvoltare web freelance în Brașov. Creez site-uri și platforme web rapide și moderne pentru afaceri — plus unelte AI și aplicații full-stack.",
+      "Dezvoltator web freelance în Brașov. Creez site-uri rapide și moderne pentru afaceri, gândite pentru telefon și ușor de găsit pe Google. Cere o ofertă gratuită.",
     ogLocale: "ro_RO",
   },
   nav: {
