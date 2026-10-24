@@ -10,7 +10,7 @@ import ParticleField from "@/components/ParticleField";
 import IntroProvider from "@/components/IntroProvider";
 import IntroSplash from "@/components/IntroSplash";
 import SmoothScroll from "@/components/SmoothScroll";
-import { dictionaries, localePath, type Locale } from "@/i18n/dictionaries";
+import { dictionaries, localePath, quotePath, type Locale } from "@/i18n/dictionaries";
 import { localizeProject, projects } from "@/data/projects";
 import { localizeWebsite, websites } from "@/data/websites";
 import { siteUrl } from "@/lib/site";
@@ -59,7 +59,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       <ParticleField />
       <Nav locale={locale} t={t.nav} />
       <main className="flex-1">
-        <Hero t={t.hero} />
+        <Hero t={t.hero} quoteHref={quotePath[locale]} />
         <Services t={t.services} />
         <Websites
           t={t.websites}
@@ -70,7 +70,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
           projects={projects.map((p) => localizeProject(p, locale))}
         />
         <About t={t.about} />
-        <Contact t={t.contact} />
+        <Contact t={t.contact} quoteHref={quotePath[locale]} />
       </main>
       <Footer t={t.footer} />
     </IntroProvider>

@@ -28,10 +28,13 @@ if (!empty($_POST['company'])) {
 $name = trim((string)($_POST['name'] ?? ''));
 $email = trim((string)($_POST['email'] ?? ''));
 $message = trim((string)($_POST['message'] ?? ''));
+$phone = trim((string)($_POST['phone'] ?? ''));
+$type = trim((string)($_POST['type'] ?? ''));
 
 if ($name === '' || mb_strlen($name) > 100
     || !filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 200
-    || mb_strlen($message) < 10 || mb_strlen($message) > 5000) {
+    || mb_strlen($message) < 10 || mb_strlen($message) > 5000
+    || mb_strlen($phone) > 40 || mb_strlen($type) > 100) {
     respond(422, ['ok' => false, 'error' => 'invalid']);
 }
 
@@ -53,7 +56,14 @@ file_put_contents($log, implode("\n", $recent), LOCK_EX);
 // address is safe for Reply-To: FILTER_VALIDATE_EMAIL rejects line breaks.
 $name = preg_replace('/[\r\n\t]+/', ' ', $name);
 $subject = '=?UTF-8?B?' . base64_encode("Website enquiry from $name") . '?=';
-$body = "Name: $name\nEmail: $email\n\n$message\n";
+$body = "Name: $name\nEmail: $email\n";
+if ($phone !== '') {
+    $body .= "Phone: $phone\n";
+}
+if ($type !== '') {
+    $body .= "Needs: $type\n";
+}
+$body .= "\n$message\n";
 $headers = [
     'From' => FROM,
     'Reply-To' => $email,

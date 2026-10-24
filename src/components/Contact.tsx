@@ -2,16 +2,21 @@
 
 import { motion } from "framer-motion";
 import { ease } from "@/lib/motion";
-import { Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, Mail, MessageCircle } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import SectionHeading from "./SectionHeading";
-import ContactForm from "./ContactForm";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 const secondary =
   "flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-muted transition-colors hover:border-accent hover:text-accent";
 
-export default function Contact({ t }: { t: Dictionary["contact"] }) {
+export default function Contact({
+  t,
+  quoteHref,
+}: {
+  t: Dictionary["contact"];
+  quoteHref: string;
+}) {
   return (
     <section id="contact" className="relative py-32 px-6">
       <motion.div
@@ -24,13 +29,19 @@ export default function Contact({ t }: { t: Dictionary["contact"] }) {
         <SectionHeading eyebrow={t.eyebrow} title={t.title} centered />
         <p className="mt-4 text-muted text-lg mb-10">{t.body}</p>
 
-        <ContactForm t={t.form} />
+        <a
+          href={quoteHref}
+          className="inline-flex items-center gap-2 rounded-md bg-indigo px-7 py-3.5 font-medium text-white shadow-[0_8px_24px_-10px_rgba(79,70,229,0.8)] transition-[background-color,box-shadow,translate] hover:-translate-y-px hover:bg-indigo-bright hover:shadow-[0_10px_30px_-8px_rgba(79,70,229,0.9)]"
+        >
+          {t.cta}
+          <ArrowRight size={17} />
+        </a>
 
         <p className="mt-12 mb-5 font-mono text-sm text-muted">{t.direct}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <a
             href="mailto:lydiagroza@gmail.com"
-            className="flex items-center gap-2 rounded-md bg-indigo px-6 py-3 text-sm font-medium text-white shadow-[0_8px_24px_-10px_rgba(79,70,229,0.8)] transition-[background-color,box-shadow,translate] hover:-translate-y-px hover:bg-indigo-bright hover:shadow-[0_10px_30px_-8px_rgba(79,70,229,0.9)]"
+            className={secondary}
           >
             <Mail size={16} />
             {t.email}

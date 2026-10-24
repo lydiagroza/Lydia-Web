@@ -5,7 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ease } from "@/lib/motion";
 import { useIntro } from "./IntroProvider";
 import { LogoMark, LogoWordmark } from "./Logo";
-import { localePath, locales, type Dictionary, type Locale } from "@/i18n/dictionaries";
+import {
+  localePath,
+  locales,
+  quotePath,
+  type Dictionary,
+  type Locale,
+} from "@/i18n/dictionaries";
 
 const sections = ["services", "work", "projects", "about", "contact"] as const;
 
@@ -116,7 +122,7 @@ export default function Nav({
         <LanguageSwitch locale={locale} label={t.language} />
 
         <a
-          href="#contact"
+          href={quotePath[locale]}
           className="whitespace-nowrap rounded-md bg-indigo px-3.5 py-1.5 text-xs font-medium text-white transition-colors hover:bg-indigo-bright sm:text-sm"
         >
           {t.cta}

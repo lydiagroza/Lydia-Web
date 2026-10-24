@@ -12,7 +12,14 @@ const field =
 
 // Posts to contact.php (public/contact.php), which emails the message from
 // the cPanel server.
-export default function ContactForm({ t }: { t: Dictionary["contact"]["form"] }) {
+// `types` are the project kinds a visitor can pick from (the service titles).
+export default function ContactForm({
+  t,
+  types,
+}: {
+  t: Dictionary["contact"]["form"];
+  types: string[];
+}) {
   const [status, setStatus] = useState<Status>("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -79,6 +86,29 @@ export default function ContactForm({ t }: { t: Dictionary["contact"]["form"] })
           className={field}
         />
       </label>
+      <label className="grid gap-1.5 text-xs text-muted sm:col-span-2">
+        {t.phone}
+        <input
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          maxLength={40}
+          className={field}
+        />
+      </label>
+      <fieldset className="grid gap-2 sm:col-span-2">
+        <legend className="mb-1.5 text-xs text-muted">{t.type}</legend>
+        <div className="flex flex-wrap gap-2">
+          {[...types, t.other].map((type) => (
+            <label key={type} className="cursor-pointer">
+              <input type="radio" name="type" value={type} className="peer sr-only" />
+              <span className="block rounded-full border border-border px-3.5 py-1.5 text-sm text-muted transition-colors hover:border-accent/50 hover:text-foreground peer-checked:border-accent peer-checked:bg-indigo/15 peer-checked:text-foreground peer-focus-visible:ring-2 peer-focus-visible:ring-accent/60">
+                {type}
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <label className="grid gap-1.5 text-xs text-muted sm:col-span-2">
         {t.message}
         <textarea

@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { ease } from "@/lib/motion";
 import Image from "next/image";
-import { ChevronDown, Mail, MessageCircle, Phone } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import DirectContact from "./DirectContact";
 import { useIntro } from "./IntroProvider";
 import type { Dictionary } from "@/i18n/dictionaries";
 
@@ -23,10 +24,13 @@ const item = {
   },
 };
 
-const direct =
-  "flex items-center gap-2 transition-colors hover:text-accent";
-
-export default function Hero({ t }: { t: Dictionary["hero"] }) {
+export default function Hero({
+  t,
+  quoteHref,
+}: {
+  t: Dictionary["hero"];
+  quoteHref: string;
+}) {
   const { ready } = useIntro();
 
   return (
@@ -95,7 +99,7 @@ export default function Hero({ t }: { t: Dictionary["hero"] }) {
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <a
-            href="#contact"
+            href={quoteHref}
             className="whitespace-nowrap rounded-md bg-indigo px-6 py-3 text-sm font-medium text-white shadow-[0_8px_24px_-10px_rgba(79,70,229,0.8)] transition-[background-color,box-shadow,translate] hover:-translate-y-px hover:bg-indigo-bright hover:shadow-[0_10px_30px_-8px_rgba(79,70,229,0.9)]"
           >
             {t.ctaContact}
@@ -108,27 +112,8 @@ export default function Hero({ t }: { t: Dictionary["hero"] }) {
           </a>
         </motion.div>
 
-        <motion.div variants={item} className="mt-8 flex flex-col items-center gap-3">
-          <p className="font-mono text-xs text-muted">{t.direct}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
-            <a
-              href={`https://wa.me/40723040958?text=${encodeURIComponent(t.whatsappText)}`}
-              target="_blank"
-              rel="noreferrer"
-              className={direct}
-            >
-              <MessageCircle size={16} />
-              {t.whatsapp}
-            </a>
-            <a href="tel:+40723040958" className={direct}>
-              <Phone size={16} />
-              {t.call}
-            </a>
-            <a href="mailto:lydiagroza@gmail.com" className={direct}>
-              <Mail size={16} />
-              {t.email}
-            </a>
-          </div>
+        <motion.div variants={item} className="mt-8">
+          <DirectContact t={t} />
         </motion.div>
       </motion.div>
 

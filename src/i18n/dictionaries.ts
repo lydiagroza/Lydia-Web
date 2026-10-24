@@ -4,6 +4,9 @@ export type Locale = (typeof locales)[number];
 // Path of the home page for each locale (trailingSlash is on).
 export const localePath: Record<Locale, string> = { en: "/", ro: "/ro/" };
 
+// Path of the free-quote page for each locale.
+export const quotePath: Record<Locale, string> = { en: "/quote/", ro: "/ro/oferta/" };
+
 const en = {
   meta: {
     title: "Lydia Groza — Web Developer in Brașov",
@@ -118,9 +121,13 @@ const en = {
     whatsapp: "WhatsApp",
     whatsappText: "Hi Lydia! I'm interested in a website.",
     direct: "Or reach me directly",
+    cta: "Get a free quote",
     form: {
       name: "Name",
       email: "Email",
+      phone: "Phone (optional)",
+      type: "What do you need?",
+      other: "Something else",
       message: "Message",
       placeholder: "What do you need built?",
       send: "Send message",
@@ -131,6 +138,17 @@ const en = {
       invalid:
         "Please add your name, a valid email, and a message of at least 10 characters.",
     },
+  },
+  quote: {
+    meta: {
+      title: "Get a free quote — Lydia Groza",
+      description:
+        "Tell me about your business and the website you need, and I'll reply with a free, no-obligation quote.",
+    },
+    back: "Back to site",
+    eyebrow: "Free quote",
+    title: "Let's talk about your website",
+    lead: "Tell me a bit about your business and what you need. I'll reply with a free, no-obligation quote.",
   },
   footer: {
     rights: "Brașov, Romania. Built with Next.js.",
@@ -254,9 +272,13 @@ const ro: Dictionary = {
     whatsapp: "WhatsApp",
     whatsappText: "Bună, Lydia! Aș vrea un site.",
     direct: "Sau contactează-mă direct",
+    cta: "Cere o ofertă gratuită",
     form: {
       name: "Nume",
       email: "Email",
+      phone: "Telefon (opțional)",
+      type: "De ce ai nevoie?",
+      other: "Altceva",
       message: "Mesaj",
       placeholder: "Ce ai vrea să construim?",
       send: "Trimite mesajul",
@@ -267,6 +289,17 @@ const ro: Dictionary = {
       invalid:
         "Completează numele, un email valid și un mesaj de cel puțin 10 caractere.",
     },
+  },
+  quote: {
+    meta: {
+      title: "Cere o ofertă gratuită — Lydia Groza",
+      description:
+        "Spune-mi despre afacerea ta și de ce site ai nevoie, iar eu îți trimit o ofertă gratuită, fără obligații.",
+    },
+    back: "Înapoi la site",
+    eyebrow: "Ofertă gratuită",
+    title: "Hai să vorbim despre site-ul tău",
+    lead: "Spune-mi câteva lucruri despre afacerea ta și de ce ai nevoie. Îți răspund cu o ofertă gratuită, fără obligații.",
   },
   footer: {
     rights: "Brașov, România. Construit cu Next.js.",
