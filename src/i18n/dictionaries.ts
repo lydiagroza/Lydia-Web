@@ -14,6 +14,12 @@ export const thanksPath: Record<Locale, string> = {
   ro: "/ro/oferta/multumesc/",
 };
 
+// Path of the privacy page for each locale.
+export const privacyPath: Record<Locale, string> = {
+  en: "/privacy/",
+  ro: "/ro/confidentialitate/",
+};
+
 const en = {
   meta: {
     title: "Lydia Groza — Web Developer in Brașov",
@@ -166,6 +172,63 @@ const en = {
   footer: {
     rights: "Brașov, Romania. Built with Next.js.",
     top: "Back to top ↑",
+    privacy: "Privacy",
+    privacyHref: privacyPath.en,
+    cookies: "Cookie settings",
+  },
+  consent: {
+    label: "Cookie consent",
+    text: "May I use Google Analytics cookies to see how visitors use this site? They only load if you accept.",
+    privacy: "Privacy policy",
+    accept: "Accept",
+    decline: "Decline",
+  },
+  privacy: {
+    title: "Privacy policy",
+    updated: "Last updated: 3 November 2026",
+    sections: [
+      {
+        heading: "Who is responsible",
+        body: [
+          "This site is run by Lydia Groza, a web developer based in Brașov, Romania. For anything about your data, email lydiagroza@gmail.com.",
+        ],
+      },
+      {
+        heading: "The contact form",
+        body: [
+          "The form collects your name, email address, optional phone number, the kind of project you need and your message. They reach me by email, so I can reply and prepare the quote you asked for. The legal basis is taking the steps you request before a possible contract.",
+          "I don't use these details for marketing. I keep them only as long as needed to answer you and for any work that follows, unless the law requires longer.",
+          "To limit spam, the server also keeps a hashed form of your IP address with the times of your recent submissions.",
+        ],
+      },
+      {
+        heading: "Google Analytics",
+        body: [
+          "Only if you accept, this site uses Google Analytics 4, provided by Google Ireland Limited, to measure visits. It sets cookies (_ga and _ga_*) and collects the pages you view, how you reached the site, your device and browser type and your approximate location. The legal basis is your consent.",
+          "Google may process this data outside the EU, including in the United States. Analytics data is kept for 2 months. If you decline, Google Analytics doesn't load at all.",
+          "You can change your choice at any time through “Cookie settings” at the bottom of each page.",
+        ],
+      },
+      {
+        heading: "Storage in your browser",
+        body: [
+          "Your browser's local storage remembers your cookie choice, and its session storage remembers that the intro animation has already played. Neither is used to track you.",
+        ],
+      },
+      {
+        heading: "Service providers",
+        body: [
+          "The site is hosted by InMotion Hosting and delivered through Cloudflare, which process technical data such as IP addresses to serve pages. Form messages are sent through the host's mail service and MailChannels and arrive in my Gmail account, provided by Google.",
+        ],
+      },
+      {
+        heading: "Your rights",
+        body: [
+          "You can ask to access, correct or delete your data, to restrict or object to its processing, or to receive a copy of it. Where processing relies on consent, you can withdraw it at any time.",
+          "You can also complain to the Romanian data protection authority, ANSPDCP (dataprotection.ro).",
+        ],
+      },
+    ],
   },
 };
 
@@ -322,6 +385,63 @@ const ro: Dictionary = {
   footer: {
     rights: "Brașov, România. Construit cu Next.js.",
     top: "Înapoi sus ↑",
+    privacy: "Confidențialitate",
+    privacyHref: privacyPath.ro,
+    cookies: "Setări cookie",
+  },
+  consent: {
+    label: "Consimțământ cookie",
+    text: "Îmi permiți să folosesc cookie-uri Google Analytics ca să văd cum este folosit site-ul? Se încarcă doar dacă accepți.",
+    privacy: "Politica de confidențialitate",
+    accept: "Accept",
+    decline: "Refuz",
+  },
+  privacy: {
+    title: "Politica de confidențialitate",
+    updated: "Ultima actualizare: 3 noiembrie 2026",
+    sections: [
+      {
+        heading: "Cine este responsabil",
+        body: [
+          "Acest site este administrat de Lydia Groza, dezvoltator web din Brașov, România. Pentru orice întrebare despre datele tale, scrie-mi la lydiagroza@gmail.com.",
+        ],
+      },
+      {
+        heading: "Formularul de contact",
+        body: [
+          "Formularul colectează numele, adresa de email, numărul de telefon (opțional), tipul de proiect și mesajul tău. Acestea ajung la mine prin email, ca să îți pot răspunde și pregăti oferta cerută. Temeiul legal este efectuarea demersurilor pe care le soliciți înaintea unui posibil contract.",
+          "Nu folosesc aceste date pentru marketing. Le păstrez doar cât este nevoie ca să îți răspund și pentru eventuala colaborare care urmează, cu excepția cazului în care legea cere o perioadă mai lungă.",
+          "Pentru a limita spamul, serverul păstrează și o formă hash a adresei tale IP, împreună cu momentele în care ai trimis recent formularul.",
+        ],
+      },
+      {
+        heading: "Google Analytics",
+        body: [
+          "Doar dacă accepți, acest site folosește Google Analytics 4, furnizat de Google Ireland Limited, pentru a măsura vizitele. Serviciul setează cookie-uri (_ga și _ga_*) și colectează paginile vizualizate, modul în care ai ajuns pe site, tipul de dispozitiv și browser și locația aproximativă. Temeiul legal este consimțământul tău.",
+          "Google poate prelucra aceste date în afara UE, inclusiv în Statele Unite. Datele de analiză sunt păstrate 2 luni. Dacă refuzi, Google Analytics nu se încarcă deloc.",
+          "Îți poți schimba oricând alegerea din „Setări cookie”, în partea de jos a fiecărei pagini.",
+        ],
+      },
+      {
+        heading: "Stocarea în browser",
+        body: [
+          "Stocarea locală a browserului reține alegerea ta privind cookie-urile, iar stocarea de sesiune reține că animația de început a rulat deja. Niciuna nu este folosită pentru a te urmări.",
+        ],
+      },
+      {
+        heading: "Furnizori de servicii",
+        body: [
+          "Site-ul este găzduit de InMotion Hosting și livrat prin Cloudflare, care prelucrează date tehnice, precum adresele IP, pentru a afișa paginile. Mesajele din formular sunt trimise prin serviciul de email al gazdei și MailChannels și ajung în contul meu de Gmail, furnizat de Google.",
+        ],
+      },
+      {
+        heading: "Drepturile tale",
+        body: [
+          "Poți cere accesul la datele tale, corectarea sau ștergerea lor, restricționarea prelucrării, te poți opune prelucrării sau poți primi o copie a datelor. Când prelucrarea se bazează pe consimțământ, îl poți retrage oricând.",
+          "De asemenea, poți depune o plângere la autoritatea română de protecție a datelor, ANSPDCP (dataprotection.ro).",
+        ],
+      },
+    ],
   },
 };
 

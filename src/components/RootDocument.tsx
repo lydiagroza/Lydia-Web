@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import CookieConsent from "@/components/CookieConsent";
 import MotionProvider from "@/components/MotionProvider";
 import { introScript } from "@/components/IntroProvider";
-import type { Locale } from "@/i18n/dictionaries";
+import { dictionaries, privacyPath, type Locale } from "@/i18n/dictionaries";
 import "@/app/globals.css";
 
 // latin-ext covers Romanian diacritics (ă, ș, ț).
@@ -47,6 +48,7 @@ export default function RootDocument({
           <style>{`.intro-overlay{display:none}`}</style>
         </noscript>
         <MotionProvider>{children}</MotionProvider>
+        <CookieConsent t={dictionaries[locale].consent} privacyHref={privacyPath[locale]} />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import {
   dictionaries,
   localePath,
+  privacyPath,
   quotePath,
   thanksPath,
   type Locale,
@@ -87,5 +88,14 @@ export function buildThanksMetadata(locale: Locale): Metadata {
     title: dictionaries[locale].quote.thanks.title,
     robots: { index: false },
     alternates: { canonical: thanksPath[locale] },
+  };
+}
+
+// Linked from the footer and the cookie banner; kept out of search.
+export function buildPrivacyMetadata(locale: Locale): Metadata {
+  return {
+    title: dictionaries[locale].privacy.title,
+    robots: { index: false },
+    alternates: { canonical: privacyPath[locale] },
   };
 }

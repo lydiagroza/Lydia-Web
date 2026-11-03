@@ -29,6 +29,8 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://lydiagrozaweb.com
+          # Google Analytics 4 measurement ID; empty keeps it off.
+          NEXT_PUBLIC_GA_ID: G-TD45VPQGQW
 
       - name: Upload changed files over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
