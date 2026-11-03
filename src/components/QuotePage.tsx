@@ -1,6 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import DirectContact from "@/components/DirectContact";
 import Footer from "@/components/Footer";
+import ParticleField from "@/components/ParticleField";
 import ProcessSteps from "@/components/ProcessSteps";
 import SectionHeading from "@/components/SectionHeading";
 import SubpageShell from "@/components/SubpageShell";
@@ -13,6 +14,7 @@ export default function QuotePage({ locale }: { locale: Locale }) {
 
   return (
     <>
+      <ParticleField />
       <SubpageShell locale={locale} paths={quotePath} />
 
       <main className="flex-1 px-6 pb-24 pt-12 sm:pt-16">

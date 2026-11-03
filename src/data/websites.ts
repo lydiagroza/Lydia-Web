@@ -28,7 +28,7 @@ export const websites: Website[] = [
       ro: "Site bilingv (EN/DE) pentru o echipă de consultanți Workday — servicii, industrii și expertiză, cu CMS integrat, ca firma să-și poată actualiza singură conținutul.",
     },
     stack: ["Astro", "React", "Tailwind", "Keystatic CMS"],
-    href: "https://ac-consulting-blue.vercel.app",
+    href: "https://ac-econsulting.ro",
     image: "/work/ac-consulting.jpg",
     preview: { src: "/work/ac-consulting-full.jpg", height: 4207 },
   },
